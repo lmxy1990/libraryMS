@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.pan.dao.AdminDao">
+	<!-- 查询管理员密码 -->
+	<select id="selectAdmin" parameterType="String" resultType="adminModel">
+		select * from admin_info a where a.UserName = #{name}
+	</select>
+	<!-- 修改管理员密码 -->
+	<update id="modifyPW" parameterType="adminModel">
+		update admin_info
+		<set>
+			<if test="UserName != null">UserName = #{UserName}</if>
+			<if test="Password != null">Password = #{Password},</if>
+			<if test="Mail != null">Mail = #{Mail}</if>
+		</set>
+		where Id = #{Id}
+	</update>
+	<!-- 新增管理员 -->
+	<insert id="addAdmin" parameterType="adminModel">
+		insert into
+		admin_info (`UserName`,`Password`,`Mail`) values
+		(#{UserName},#{Password},#{Mail})
+	</insert>
+	<!-- 列出所有管理员信息 -->
+	<select id="listAllAdmin" resultType="adminModel">
+		select * from admin_info
+	</select>
+	<!-- 删除管理员 -->
+	<delete id = "delAdmin" parameterType = "Integer">
+		delete from admin_info where id = #{id}
+	</delete>
+</mapper>

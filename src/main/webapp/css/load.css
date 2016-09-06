@@ -1,0 +1,17 @@
+#loadOut {
+	width: 550px;
+	height: 300px;
+	position: fixed;
+	background-color: #008b8b;
+	border-radius: 15px;
+	top: 0px;
+	left: 0px;
+	bottom: 40px;
+	right: 0px;
+	margin: auto;
+	text-align: center;
+	color: white;
+}
+input {
+	color: #333 ;
+}

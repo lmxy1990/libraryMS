@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.pan.dao.BooksDao">
+	<!-- 新增分类 -->
+	<insert id= "addClass"  parameterType="String">
+		insert into books_class (`TypeName`) values (#{TypeName})
+	</insert>
+	<!-- 删除分类 -->
+	<delete id= "delClass" parameterType="String">
+		delete from books_class where `TypeName` = #{TypeName}
+	</delete>
+	<!-- 查询图书分类信息 -->
+	<select id= "scanClass" resultType="bookClassModel">
+		select * from books_class
+	</select>
+	<!-- 新增图书信息 -->
+	<insert id= "addBook" parameterType="booksModel">
+		insert into `books_info` 
+		(`ISBN`, `Typeld`, `BookName`, `Writer`, `Translater`, `Publisher`, `Date`, `Price`) 
+		values 
+		(#{ISBN}, #{Typeld}, #{BookName}, #{Writer}, #{Translater}, #{Publisher}, #{Date}, #{Price})
+	</insert>
+	<!-- 修改图书信息 -->
+	<update id= "modifyBook" parameterType="booksModel">
+	update `books_info` 
+		<set>
+		<if test = "Typeld != null">`Typeld` = #{Typeld},</if>
+		<if test = "BookName != null">`BookName` = #{BookName},</if>
+		<if test = "Writer != null">`Writer` = #{Writer},</if>
+		<if test = "Translater != null">`Translater` = #{Translater},</if>
+		<if test = "Publisher != null">`Publisher` = #{Publisher},</if>
+		<if test = "Date != null">`Date` = #{Date},</if>
+		<if test = "Price != null">`Price` = #{Price}</if>
+		</set>
+			  where `ISBN` = #{ISBN} 
+	</update>
+	<!-- 删除图书信息 -->
+	<delete id= "delBook" parameterType="long" >
+		delete from `books_info` where `ISBN` = #{ISBN}
+	</delete>
+	<!-- 查询图书信息 -->
+	<select id= "findBook" parameterType="int" resultType="booksModel">
+		select * from `books_info` where `Typeld` = #{Typeld}
+	</select>
+	<!-- 通过ISBN查询图书信息 -->
+	<select id= "findBookbyID" parameterType="long" resultType="booksModel">
+		select * from `books_info` where `ISBN` = #{ISBN}
+	</select>
+</mapper>

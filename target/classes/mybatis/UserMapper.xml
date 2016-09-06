@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.pan.dao.UserDao">
+	<!-- 新增用户 -->
+	<insert id="addUser" parameterType="userModel">
+		insert into user_info
+		(`Name`,`Sex`,`Age`,`IDCardType`,`IDCardNo`,`Date`,`MaxNum`,`Tel`,`KeepMoney`,`Zy`)
+		values
+		(#{Name},#{Sex},#{Age},#{IDCardType},#{IDCardNo},#{Date},#{MaxNum},#{Tel},#{KeepMoney},#{Zy})
+	</insert>
+	<!-- 用户信息修改 -->
+	<update id="modifyUser" parameterType="userModel">
+		update user_info
+		<set>
+		<if test="Name != null">`Name` = #{Name},</if>
+		<if test="Sex != null">`Sex` = #{Sex},</if>
+		<if test="Age != null">`Age` = #{Age},</if>
+		<if test="IDCardType != null">`IDCardType` = #{IDCardType},</if>
+		<if test="IDCardNo != null"> `IDCardNo` = #{IDCardNo}, </if>
+		<if test="Date != null">`Date` = #{Date},</if>
+		<if test="MaxNum != null"> `MaxNum` = #{MaxNum}, </if>
+		<if test="Tel != null">`Tel` = #{Tel},</if>
+		<if test="KeepMoney != null">`KeepMoney` = #{KeepMoney},</if>
+		<if test="Zy != null">`Zy` = #{Zy}</if>
+		</set>
+		<where>
+			 `Id` = #{Id}
+		</where>
+	</update>
+	<!-- 删除用户 -->
+	<delete id="delUser"  parameterType="int">
+		delete from user_info where `Id` = #{Id}
+	</delete>
+	<!-- 根据序号查询指定用户 -->
+	<select id="findUser" parameterType="long" resultType="userModel">
+		select * from user_info where `IDCardNo` = #{IDCardNo}
+	</select>
+	<!-- 根据名字查询用户 -->
+	<select id="findByName" parameterType="String" resultType="userModel">
+		select * from user_info where `Name` = #{Name} 
+	</select>
+	<!-- 列出所有用户 -->
+	<select id="listAllUser" resultType="userModel">
+		select * from user_info
+	</select>
+</mapper>

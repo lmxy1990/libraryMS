@@ -1,0 +1,109 @@
+
+#head {
+	height: 120px;
+}
+
+#headText {
+	width: 290px;
+	position: absolute;
+	top: 57px;
+	left:0 ;
+	right:0 ;
+	margin: auto;
+	font-size: 36px;
+}
+
+* {
+	margin: 0;
+	padding: 0
+}
+
+body {
+	font-size: 12px;
+	font-family: "宋体", "微软雅黑";
+}
+
+ul, li {
+	list-style: none;
+}
+
+a:link, a:visited {
+	text-decoration: none;
+}
+
+.list {
+	float:left ;
+	position: relative;
+	left: 5px;
+	top: 0px;
+	width : 210px;
+	border-bottom: solid 1px #316a91;
+	background-color: #316a91;
+	display: inline-block;
+}
+
+iframe {
+	position: relative;
+	display: inline-block;
+	left:10px;
+	top: 0px;
+}
+
+.list ul li {
+	background-color: #467ca2;
+	border: solid 1px #316a91;
+	border-bottom: 0;
+}
+
+.list ul li a {
+	padding-left: 10px;
+	color: #fff;
+	font-size: 12px;
+	display: block;
+	font-weight: bold;
+	height: 36px;
+	line-height: 36px;
+	position: relative;
+}
+
+.list ul li .inactive {
+	background: url(../images/off.png) no-repeat 184px center;
+}
+
+.list ul li .inactives {
+	background: url(../images/on.png) no-repeat 184px center;
+}
+
+.list ul li ul {
+	display: none;
+}
+
+.list ul li ul li {
+	border-left: 0;
+	border-right: 0;
+	background-color: #6196bb;
+	border-color: #467ca2;
+}
+
+.list ul li ul li ul {
+	display: none;
+}
+
+.list ul li ul li a {
+	padding-left: 20px;
+}
+
+.list ul li ul li ul li {
+	background-color: #d6e6f1;
+	border-color: #6196bb;
+}
+
+.last {
+	background-color: #d6e6f1;
+	border-color: #6196bb;
+}
+
+.list ul li ul li ul li a {
+	color: #316a91;
+	padding-left: 30px;
+}
